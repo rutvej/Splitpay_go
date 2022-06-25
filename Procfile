@@ -1,1 +1,1 @@
-web: bin/splitpay
+web: /bin/splitpay
