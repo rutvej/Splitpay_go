@@ -10,7 +10,7 @@ import (
 func main()  {
 	router := mux.NewRouter()
 	InitialMigration()
-	router.HandleFunc("/",Home).Methods("POST")
+	router.HandleFunc("/",Home).Methods("GET")
 	router.HandleFunc("/splitbill",CreateTranscation).Methods("POST")
 	router.HandleFunc("/showbill/{number}/{intent}",ShowTranscation).Methods("GET")
 	router.HandleFunc("/pay/{number}/{id}",PayTranscation).Methods("PUT")

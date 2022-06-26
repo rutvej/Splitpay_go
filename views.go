@@ -16,7 +16,7 @@ func Home(w http.ResponseWriter, r *http.Request){
     gateway_information := string(body)
 
 	fmt.Println(gateway_information)
-    fmt.Fprintf(w,gateway_information)
+    fmt.Fprintf(w,"hello")
 
 }
 
