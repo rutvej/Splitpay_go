@@ -1,6 +1,7 @@
 package main
 
 import (
+	"os"
 	"fmt"
 	"encoding/json"
 	"github.com/tidwall/gjson"
@@ -29,9 +30,10 @@ type Transcation struct{
 
 
 func InitialMigration(){
-	db, err := gorm.Open("postgres", "host=localhost port=5432 user=postgres dbname=postgres sslmode=disable password=postgres")
+	val := os.Getenv("DBSTR")
+	db, err := gorm.Open("postgres", val)
 	if err != nil {
-
+		fmt.Println(err)
 		panic("failed to connect database")
 	
 	}
@@ -41,7 +43,8 @@ func InitialMigration(){
 }
 
 func CreateConnection() *gorm.DB{
-	db, err := gorm.Open("postgres", "host=localhost port=5432 user=postgres dbname=postgres sslmode=disable password=postgres")
+	val := os.Getenv("DBSTR")
+	db, err := gorm.Open("postgres", val)
 	if err != nil {
 
 		panic("failed to connect database")
