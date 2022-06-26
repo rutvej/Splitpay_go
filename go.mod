@@ -1,4 +1,4 @@
-module rutvej/Splitpay_go
+module splitpay
 
 go 1.16
 

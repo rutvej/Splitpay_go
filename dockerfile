@@ -10,10 +10,11 @@ RUN go get github.com/gorilla/mux
 RUN go get github.com/jinzhu/gorm
 RUN go get github.com/lib/pq
 RUN go get github.com/google/uuid
+RUN go get github.com/tools/godep
 
 COPY *.go app/splitpay/
-COPY view /go/src/view
-COPY models /go/src/models
+# COPY view /go/src/view
+# COPY models /go/src/models
 WORKDIR app/splitpay/
 
-CMD go run main.go
+CMD go run *.go
