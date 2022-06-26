@@ -60,7 +60,7 @@ func Save(payload string) string{
 	jsobj := gjson.Parse(payload)
 	tid := uuid.New().String()
 	
-	jsobj.Get("split").ForEach(func(_,value gjson.Result) bool{
+	go jsobj.Get("split").ForEach(func(_,value gjson.Result) bool{
 		col := Transcation{
 			TranscationID:tid,
 			BillAmount:jsobj.Get("billAmont").Int(),
@@ -148,7 +148,7 @@ func GetAll(number string,intent string) string {
 			payload,_ = sjson.Set(payload,"nPeople",value.Get("Npeople").String())
 			payload,_ = sjson.Set(payload,"myShare",value.Get("Share").Int())
 			payload,_ = sjson.Set(payload,"status",value.Get("Status").String())
-			payload,_ = sjson.Set(payload,"Paylink","/pay/"+value.Get("Rnumber").String()+"/"+value.Get("TranscationID").String())
+			payload,_ = sjson.Set(payload,"Paylink","/pay/"+value.Get("Pnumber").String()+"/"+value.Get("TranscationID").String())
 			resp,_ = sjson.SetRaw(resp,".-1",payload)
 			return true
 		})

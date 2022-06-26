@@ -44,9 +44,9 @@ func PayTranscation(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	params := mux.Vars(r)
 	fmt.Println(params["id"])
-	UpdateStatus(params["id"],params["number"])
+	go UpdateStatus(params["id"],params["number"])
 	fmt.Println("success")
-    fmt.Fprintf(w,`{"status":"succes"}`)
+    fmt.Fprintf(w,`{"status":"success"}`)
 }
 
 

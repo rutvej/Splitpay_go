@@ -3,6 +3,8 @@ FROM golang:1.13.8-alpine3.11
 RUN apk add --update git
 
 ENV GOBIN /go/bin
+ENV DBSTR host=localhost port=5432 user=postgres dbname=postgres sslmode=disable password=postgres
+ENV PORT 10021
 
 RUN go get github.com/tidwall/gjson
 RUN go get github.com/tidwall/sjson
